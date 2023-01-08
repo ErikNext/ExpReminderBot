@@ -1,9 +1,12 @@
-﻿using ExpiredReminderBot.Commands;
+﻿using System.Globalization;
+using ExpiredReminderBot.Commands;
 using ExpiredReminderBot.Commands.ShopCommands;
 using ExpiredReminderBot.Extensions;
 using ExpiredReminderBot.Models;
 using ExpiredReminderBot.Services;
 using ExpiredReminderBot.Services.Products;
+using Microsoft.Extensions.Primitives;
+using Quartz.Xml.JobSchedulingData20;
 
 namespace ExpiredReminderBot.Modes;
 
@@ -85,12 +88,13 @@ public class CreateProductMode : ModeBase
 
     public async Task SetExpiryDate(User user, string data)
     {
-        if (!DateTimeOffset.TryParse(data, out DateTimeOffset expiryDate))
+        if (!DateTimeOffset.TryParse(data, CultureInfo.CurrentCulture, DateTimeStyles.None, out var expiryDate))
         {
             await SenderService.SendInlineKeyboard(user, "Ошибка! Введите корректную дату",
                 GetKeyboardElements());
             return;
         }
+
 
         if (expiryDate < DateTimeOffset.UtcNow)
         {
@@ -151,7 +155,7 @@ public class CreateProductMode : ModeBase
 
         return new List<InlineKeyboardElement>()
         {
-            new("Отменить", $"{shopMenuCommand.Key}:{_shop.Id}")
+            new("В меню магазина", $"{shopMenuCommand.Key}:{_shop.Id}")
         };
     }
 }
