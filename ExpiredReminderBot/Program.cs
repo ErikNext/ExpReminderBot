@@ -33,7 +33,7 @@ builder.Services.AddSingleton<ISubscriptionsService, SubscriptionsService>();
 
 builder.Services.AddAllCommandsAsSingleton();
 builder.Services.AddMvc();
-//builder.Services.InitializeContext(builder.Configuration);
+builder.Services.InitializeContext(builder.Configuration);
 
 builder.Services.AddQuartz(
     q => 
