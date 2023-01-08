@@ -12,7 +12,7 @@ public static class Registration
     {
         services.AddDbContext<ExpiredReminderDbContext>(
             (s, b) =>
-                b.UseNpgsql(configuration.GetConnectionString("ExpiredReminderDb")), ServiceLifetime.Singleton);
+                b.UseNpgsql("configuration.GetConnectionString(\"ExpiredReminderDb\")"), ServiceLifetime.Singleton);
 
         return services;
     }
