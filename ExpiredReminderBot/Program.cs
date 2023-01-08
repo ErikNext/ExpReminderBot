@@ -11,6 +11,7 @@ using ExpiredReminderBot.Services.Subscriptions;
 using ExpiredReminderBot.Services.Transactions;
 using ExpiredReminderBot.Services.Users;
 using Quartz;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,6 +64,8 @@ builder.Services.AddQuartz(
     });
 
 builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
+
+Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-GB");
 
 builder.Services.AddControllers().AddNewtonsoftJson();
 var app = builder.Build();
