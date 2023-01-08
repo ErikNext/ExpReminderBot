@@ -48,7 +48,7 @@ public class NotificationExpiredProductsJob : IJob
             var message = $"Внимание! Магазин: {shop.Title}💡" +
                           $"\nТовар: {product.Title}" +
                           $"\nGold: {product.GoldCode}" +
-                          $"\nВыйдет из срока: {product.ExpiryDate.Date.ToShortDateString()}";
+                          $"\nВыйдет из срока: {product.ExpiryDate.Date.ToString("dd.MM.yyyy")}";
 
 
             var elements = new List<InlineKeyboardElement>()

@@ -65,7 +65,7 @@ builder.Services.AddQuartz(
 
 builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 
-Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-GB");
+Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
 builder.Services.AddControllers().AddNewtonsoftJson();
 var app = builder.Build();

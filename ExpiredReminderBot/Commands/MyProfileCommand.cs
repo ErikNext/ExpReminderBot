@@ -3,6 +3,7 @@ using ExpiredReminderBot.Models;
 using ExpiredReminderBot.Services;
 using ExpiredReminderBot.Services.Subscriptions;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using System.Globalization;
 using Telegram.Bot.Types.Enums;
 
 namespace ExpiredReminderBot.Commands;
@@ -30,8 +31,7 @@ public class MyProfileCommand : CommandBase
         if (subscription == null)
             message += "не активна";
         else
-            message += $"до {subscription.EndDate.Date.ToShortDateString()}";
-
+            message += $"до {subscription.EndDate.Date.ToString("dd.MM.yyyy")}";
 
         await Sender.SendOrEditInlineKeyboard(user, message, GetAvailableElements(), ParseMode.Markdown);
     }

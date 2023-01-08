@@ -104,7 +104,7 @@ public class CreateProductMode : ModeBase
 
         await SenderService.SendInlineKeyboard(user, $"Название: {_createProductRequest.Title}\n" +
                                                             $"Gold key: {_createProductRequest.GoldCode}\n" +
-                                                            $"Дата выхода из срока: {_createProductRequest.ExpiryDate.DateTime.ToShortDateString()}", 
+                                                            $"Дата выхода из срока: {_createProductRequest.ExpiryDate.DateTime.ToString("dd.MM.yyyy")}", 
             GetAvailableOperations());
     }
 
