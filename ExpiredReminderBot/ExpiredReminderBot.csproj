@@ -12,8 +12,9 @@
 	  <PackageReference Include="Quartz" Version="3.5.0" />
 	  <PackageReference Include="Quartz.Extensions.Hosting" Version="3.5.0" />
 	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	  <PackageReference Include="System.Text.Json" Version="7.0.1" />
     <PackageReference Include="Telegram.Bot" Version="18.0.0" />
-    <PackageReference Include="Ulid" Version="1.2.6" />
+	  <PackageReference Include="NUlid" Version="1.7.1" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
