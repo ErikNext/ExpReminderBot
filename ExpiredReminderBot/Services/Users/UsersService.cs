@@ -6,6 +6,7 @@ using ExpiredReminderBot.Extensions;
 using ExpiredReminderBot.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NUlid;
 
 namespace ExpiredReminderBot.Services.Users;
 

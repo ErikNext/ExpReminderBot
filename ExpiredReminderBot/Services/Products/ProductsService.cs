@@ -3,6 +3,7 @@ using ExpiredReminderBot.Database.Rows;
 using ExpiredReminderBot.Models;
 using ExpiredReminderBot.Services.Shops;
 using Microsoft.EntityFrameworkCore;
+using NUlid;
 
 namespace ExpiredReminderBot.Services.Products;
 
