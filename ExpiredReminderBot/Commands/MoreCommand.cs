@@ -50,7 +50,10 @@ public class MoreCommand : CommandBase
             {
                 new List<InlineKeyboardElement>()
                 {
-                    new(addManagerToShopCommand.Title, $"{addManagerToShopCommand.Key}:{shop.Id}"),
+                    new(addManagerToShopCommand.Title, $"{addManagerToShopCommand.Key}:{shop.Id}")
+                },
+                new List<InlineKeyboardElement>()
+                {
                     new(unpinEmployeeCommand.Title, $"{unpinEmployeeCommand.Key}:{shop.Id}")
                 },
                 new List<InlineKeyboardElement>()
