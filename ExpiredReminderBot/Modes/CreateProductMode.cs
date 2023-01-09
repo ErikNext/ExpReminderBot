@@ -90,16 +90,12 @@ public class CreateProductMode : ModeBase
     {
         var culture = CultureInfo.CreateSpecificCulture("ru-RU");
 
-        await SenderService.SendMessage(user.TelegramId, $"Культура: {culture}");
-        await SenderService.SendMessage(user.TelegramId, DateTimeOffset.UtcNow.ToString(culture));
-
         if (!DateTimeOffset.TryParse(data, culture, DateTimeStyles.None, out var expiryDate))
         {
             await SenderService.SendInlineKeyboard(user, "Ошибка! Введите корректную дату",
                 GetKeyboardElements());
             return;
         }
-
 
         if (expiryDate < DateTimeOffset.UtcNow)
         {
