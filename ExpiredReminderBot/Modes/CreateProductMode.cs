@@ -89,7 +89,6 @@ public class CreateProductMode : ModeBase
     public async Task SetExpiryDate(User user, string data)
     {
         var culture = CultureInfo.CreateSpecificCulture("ru-RU");
-
         if (!DateTimeOffset.TryParse(data, culture, DateTimeStyles.None, out var expiryDate))
         {
             await SenderService.SendInlineKeyboard(user, "Ошибка! Введите корректную дату",
