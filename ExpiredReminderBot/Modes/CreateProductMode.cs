@@ -88,6 +88,7 @@ public class CreateProductMode : ModeBase
 
     public async Task SetExpiryDate(User user, string data)
     {
+        await SenderService.SendMessage(user.TelegramId, DateTimeOffset.UtcNow.ToString(CultureInfo.CurrentCulture));
         if (!DateTimeOffset.TryParse(data, CultureInfo.CurrentCulture, DateTimeStyles.None, out var expiryDate))
         {
             await SenderService.SendInlineKeyboard(user, "Ошибка! Введите корректную дату",
@@ -98,7 +99,7 @@ public class CreateProductMode : ModeBase
 
         if (expiryDate < DateTimeOffset.UtcNow)
         {
-            await SenderService.SendInlineKeyboard(user, "Ошибка! Введите корректную дату",
+            await SenderService.SendInlineKeyboard(user, "Ошибка! Указанная дата не должна быть меньше текущей",
                 GetKeyboardElements());
             return;
         }
