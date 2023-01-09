@@ -88,6 +88,7 @@ public class CreateProductMode : ModeBase
 
     public async Task SetExpiryDate(User user, string data)
     {
+        await SenderService.SendMessage(user.TelegramId, CultureInfo.CurrentCulture.ToString());
         await SenderService.SendMessage(user.TelegramId, DateTimeOffset.UtcNow.ToString(CultureInfo.CurrentCulture));
         if (!DateTimeOffset.TryParse(data, CultureInfo.CurrentCulture, DateTimeStyles.None, out var expiryDate))
         {
