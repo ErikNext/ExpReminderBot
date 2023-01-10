@@ -70,8 +70,6 @@ public class CreateProductMode : ModeBase
 
     public async Task SetGoldCode(User user, string data)
     {
-        //ToDo: сделать проверку голд кода по каким либо параметрам
-
         if (String.IsNullOrEmpty(data))
         {
             await SenderService.SendInlineKeyboard(user, "Ошибка! Введите корректный gold code!",

@@ -11,6 +11,8 @@ public interface IUsersService
 
     Task<User?> Get(string id);
 
+    Task<User?> GetByTelegramId(long id);
+
     Task<bool> IsAdmin(string userId);
 
     Task<User> Update(string userId, UpdateUserRequest request);

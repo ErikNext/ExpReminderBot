@@ -76,6 +76,14 @@ public class ReplenishmentBalanceMode : ModeBase
     {
         _userForReplenishment = await _usersService.Get(data);
 
+        if(_userForReplenishment == null)
+        {
+            if(long.TryParse(data, out var tgId))
+            {
+                _userForReplenishment = await _usersService.GetByTelegramId(tgId);
+            }
+        }
+
         if (_userForReplenishment == null)
         {
             await SenderService.SendInlineKeyboard(user, "Пользователь не найден! Попробуйте еще раз.",

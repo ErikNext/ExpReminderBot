@@ -128,6 +128,20 @@ public class UsersService : IUsersService
     {
         return new User(row.Id, row.TelegramId, row.Username, row.Balance, row.Subscription);
     }
+
+    public async Task<User?> GetByTelegramId(long id)
+    {
+        var row = await _dbContext.Users
+            .AsNoTracking()
+            .SingleOrDefaultAsync(u => u.TelegramId == id)
+            .ConfigureAwait(false);
+
+        if (row == null)
+            return null;
+
+
+        return MapToDto(row);
+    }
 }
 
 public record UpdateUserRequest(decimal? Balance = null, bool? Subscription = null);

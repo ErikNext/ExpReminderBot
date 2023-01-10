@@ -101,9 +101,15 @@ public class ActivateSubscriptionMode : ModeBase
                 {
                     if (user.Balance - _selectedPlan.Price < 0)
                     {
-                        //ToDo: Пополнить баланс кнопку
+                        var elements = new List<InlineKeyboardElement>()
+                        {
+                            new("💸 Пополнить баланс", "AddBalance", "https://t.me/eriknext")
+                        };
+                        elements.AddRange(GetAvailableCommands(user).ToKeyboardElements());
+
                         await SenderService.SendOrEditInlineKeyboard(user,
-                            "Недостаточно средств на счете!", GetAvailableCommands(user).ToKeyboardElements());
+                            "Недостаточно средств на счете!", elements);
+
                         return;
                     }
 
