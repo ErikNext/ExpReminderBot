@@ -86,6 +86,13 @@ public class AddEmployeeToShopMode : ModeBase
             return;
         }
 
+        if (manager.Id == user.Id)
+        {
+            await SenderService.SendOrEditInlineKeyboard(user,
+                "Нельзя добавить себя в качестве сотрудника!", GetKeyboardElements());
+            return;
+        }
+
         if (!await _shopsService.TryAttachToShop(user.Id, manager.Id, _shop.Id))
         {
             await SenderService.SendOrEditInlineKeyboard(user,
